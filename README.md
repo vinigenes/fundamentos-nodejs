@@ -40,13 +40,17 @@ Navegue para a pasta `src`:
 cd src
 ```
 
-## 6. Criar um Arquivo `server.js`
+### 6. Criar um Arquivo `server.js`
 Crie um arquivo chamado `server.js` dentro da pasta `src`:
 ```bash
 touch server.js
 ```
+
 **Explicação**:
-- O arquivo `server.js` será o ponto de entrada do seu servidor Node.js.
+- O arquivo `server.js` será o ponto de entrada do seu servidor Node.js. 
+
+---
+&nbsp;
 
 # Configurando `"type": "module"` no `package.json`
 
@@ -54,7 +58,7 @@ Para usar **ES Modules** (sintaxe `import`/`export`) no Node.js, você precisa c
 
 ---
 
-## Passos para Configurar
+### Passos para Configurar
 
 1. Abra o arquivo `package.json` no seu projeto.
 2. Adicione a linha `"type": "module"` no objeto principal.
@@ -81,9 +85,37 @@ Exemplo de `package.json` configurado:
 - **`"type": "module"`**: Define que todos os arquivos `.js` no projeto devem ser tratados como módulos ES (ECMAScript Modules).
 - Com isso, você pode usar a sintaxe `import`/`export` em vez de `require`/`module.exports`.
 
-## Exemplo de Uso
+&nbsp;
+
+# Criando um código
+
+O código abaixo cria um servidor HTTP básico usando o módulo `http` do Node.js.
+
+### 1. Importando o Módulo `http`
 
 ```javascript
-
 import http from 'node:http';
+```
 
+- O módulo `http` é nativo do Node.js e permite criar servidores HTTP.
+- A sintaxe `import ... from` é usada porque o código está utilizando **ES Modules** (definido por `"type": "module"` no `package.json` ou pela extensão `.mjs`).
+
+### 2. Criando o Servidor
+
+```javascript
+const server = http.createServer((req, res) => {
+
+});
+```
+- `http.createServer()` cria um servidor HTTP.
+- A função passada como argumento é um **callback** que será executado sempre que o servidor receber uma requisição (`req`) e precisar enviar uma resposta (`res`).
+- Por enquanto, o callback está vazio, então o servidor não faz nada ao receber uma requisição.
+
+### 3. Iniciando o Servidor
+
+```javascript
+server.listen(3333);
+```
+- O método `server.listen()` faz o servidor "escutar" em uma porta específica.
+- No exemplo, o servidor está configurado para escutar na porta `3333`.
+- Quando o servidor estiver rodando, você pode acessá-lo em `http://localhost:3333`.
